@@ -4,13 +4,13 @@
 
 SweetSip Studio adalah aplikasi web berbasis PHP dan MySQL yang digunakan untuk menyimpan, mengelola, dan menampilkan resep makanan serta minuman manis. Aplikasi ini dirancang dengan tampilan aesthetic pastel agar nyaman digunakan, serta menyediakan fitur manajemen data resep yang terstruktur.
 
-Proyek ini dikembangkan sebagai Proyek Ujian Akhir Semester (UAS) mata kuliah Web 1 dan dikerjakan secara individual.
+Proyek ini dikembangkan sebagai Proyek Ujian Akhir Semester (UAS) mata kuliah Web 1.
 
 ---
 
 ## Studi Kasus
 
-Sebagai seseorang yang menyukai makanan dan minuman manis, penulis sering menyimpan resep dari berbagai sumber seperti Instagram, TikTok, dan internet. Namun, resep-resep tersebut biasanya hanya disimpan dalam bentuk bookmark, tangkapan layar, atau catatan singkat yang lama-kelamaan menjadi tidak teratur, tertumpuk, bahkan hilang.
+Sebagai seseorang yang menyukai makanan dan minuman manis, saya sering menyimpan resep dari berbagai sumber seperti Instagram, TikTok, dan internet. Namun, resep-resep tersebut biasanya hanya disimpan dalam bentuk bookmark, tangkapan layar, atau catatan singkat yang lama-kelamaan menjadi tidak teratur, tertumpuk, bahkan hilang.
 
 Permasalahan tersebut menyebabkan kesulitan dalam mencari kembali resep yang pernah disimpan dan mengelolanya secara rapi.
 
@@ -53,38 +53,32 @@ Studi kasus ini relevan dengan kebiasaan pengguna sehari-hari dan sesuai dengan 
 
 ## Arsitektur Sistem
 
-Frontend (HTML, CSS, Bootstrap)  
-↓  
-Backend (PHP)  
-↓  
-Database (MySQL)
-
-Frontend berfungsi sebagai antarmuka pengguna, backend menangani logika aplikasi, autentikasi cookie, serta pengolahan data, dan database digunakan sebagai media penyimpanan data.
+- Frontend (HTML, CSS, Bootstrap)  
+- Backend (PHP)  
+- Database (MySQL)
+- Frontend berfungsi sebagai antarmuka pengguna, backend menangani logika aplikasi, autentikasi cookie, serta pengolahan data, dan database digunakan sebagai media penyimpanan data.
 
 ---
 
 ## Pemenuhan Ketentuan Proyek UAS
 
-### Backend dan Frontend Terintegrasi
+### 1. Backend dan Frontend Terintegrasi
 Aplikasi mengintegrasikan frontend dan backend dalam satu sistem berbasis web menggunakan PHP dan MySQL.
 
-### Dashboard
+### 2. Dashboard
 Sistem menyediakan dashboard admin sebagai pusat pengelolaan dan informasi data resep.
 
-### Laporan (PDF dan Excel)
+### 3. Laporan (PDF dan Excel)
 Aplikasi menyediakan fitur export laporan data resep ke dalam format PDF dan Excel.
 
-### CRUD
+### 4. CRUD
 Fungsi Create, Read, Update, dan Delete diterapkan pada data resep.
 
-### Autentikasi Cookie
+### 5. Autentikasi Cookie
 Sistem autentikasi menggunakan cookie `login_admin`. Cookie dibuat saat login berhasil dan diverifikasi pada setiap halaman admin.
 
-### Studi Kasus Nyata
+### 6. Studi Kasus Nyata
 Proyek dikembangkan berdasarkan kebiasaan nyata dalam menyimpan resep makanan dan minuman dari media sosial.
-
-### Proyek Individual
-Proyek dikerjakan secara mandiri dan bukan kerja kelompok.
 
 ---
 
@@ -126,14 +120,14 @@ Form untuk menambahkan data resep baru.
 ---
 
 ### Edit Data Resep
-Form untuk mengubah data resep yang telah tersimpan.
+Form untuk mengubah data resep yang telah tersimpan(hanya bisa mengubah teks).
 
 ![Edit Resep](screenshots/6_edit.png)
 
 ---
 
 ### Export Laporan
-Fitur export laporan data resep ke format PDF dan Excel.
+Fitur export laporan data resep ke format Excel dan PDF.
 
 ![Export Laporan](screenshots/7_export_excel.png)
 
@@ -160,6 +154,6 @@ Halaman frontend yang dapat diakses oleh pengunjung untuk melihat daftar dan det
 
 ## Pengembang
 
-Nama: Fahmi Fauziah  
+Nama: Fahmi Fauziah Nur Fadillah
 Mata Kuliah: Web 1  
 Jenis Proyek: Ujian Akhir Semester (UAS)
