@@ -1,0 +1,25 @@
+body {
+    background-color: #fffaf0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-sweetsip {
+    background-color: #f8bbd0;
+}
+
+.btn-sweetsip {
+    background-color: #f8bbd0;
+    color: #6d4c41;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.btn-sweetsip:hover {
+    background-color: #ffdae0;
+}
+
+.card-sweetsip {
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
