@@ -1,155 +1,120 @@
-# SweetSip Studio – Dessert & Drinks Recipe
-
-## Deskripsi Proyek
-
-SweetSip Studio adalah aplikasi web berbasis PHP dan MySQL yang digunakan untuk menyimpan, mengelola, dan menampilkan resep makanan serta minuman manis. Aplikasi ini dirancang dengan tampilan aesthetic pastel agar nyaman digunakan, serta menyediakan fitur manajemen data resep yang terstruktur.
-
-Proyek ini dikembangkan sebagai Proyek Ujian Akhir Semester (UAS) mata kuliah Web 1 dan dikerjakan secara individual.
+# 🍰 SweetSip Studio – Dessert & Drinks Recipe  
+## UAS Web 1
 
 ---
 
-## Studi Kasus
+## 📌 Deskripsi Proyek
+**SweetSip Studio** adalah aplikasi web berbasis **PHP dan MySQL** yang digunakan untuk menyimpan, mengelola, dan menampilkan resep makanan serta minuman manis.  
+Aplikasi ini dirancang dengan tampilan yang menarik menggunakan **Framework CSS (Bootstrap)** serta menerapkan integrasi **frontend dan backend** dalam satu sistem.
 
-Sebagai seseorang yang menyukai makanan dan minuman manis, penulis sering menyimpan resep dari berbagai sumber seperti Instagram, TikTok, dan internet. Namun, resep-resep tersebut biasanya hanya disimpan dalam bentuk bookmark, tangkapan layar, atau catatan singkat yang lama-kelamaan menjadi tidak teratur, tertumpuk, bahkan hilang.
+Proyek ini dikembangkan sebagai **Ujian Akhir Semester (UAS)** mata kuliah **Web 1**.
 
-Permasalahan tersebut menyebabkan kesulitan dalam mencari kembali resep yang pernah disimpan dan mengelolanya secara rapi.
-
-SweetSip Studio dibuat sebagai solusi untuk:
-- Menyimpan resep makanan dan minuman manis secara terstruktur
-- Mengelompokkan resep dalam satu sistem berbasis web
-- Menampilkan resep dengan tampilan yang menarik dan mudah dibaca
-- Memudahkan pengelolaan resep tanpa bergantung pada media sosial
-
-Studi kasus ini relevan dengan kebiasaan pengguna sehari-hari dan sesuai dengan penerapan aplikasi web sederhana.
+🌐 **Link Website (Hosting):**  
+http://agri.web.id
 
 ---
 
-## Aktor dalam Sistem
+## 🎯 Studi Kasus
+Berdasarkan pengalaman pribadi penulis dalam mengumpulkan resep makanan dan minuman manis dari media sosial seperti Instagram, TikTok, dan website, resep-resep tersebut umumnya hanya disimpan dalam bentuk bookmark atau tangkapan layar. Hal ini menyebabkan data resep menjadi tidak terorganisir dan sulit dicari kembali.
 
-### Admin
-- Login ke sistem menggunakan autentikasi cookie
-- Mengakses dashboard admin
-- Mengelola data resep (Create, Read, Update, Delete)
-- Mengekspor laporan data resep ke format PDF dan Excel
-
-### Pengunjung
-- Melihat daftar resep
-- Membaca detail resep
-- Tidak dapat mengubah atau mengelola data
+Oleh karena itu, SweetSip Studio dibuat sebagai solusi untuk menyimpan dan mengelola resep makanan dan minuman manis secara terstruktur dalam satu aplikasi web dengan tampilan yang menarik serta pemisahan hak akses antara admin dan pengguna.
 
 ---
 
-## Alur Sistem Aplikasi
+## 👥 Role / Aktor dalam Sistem
 
-1. Admin melakukan login melalui halaman login
-2. Sistem memvalidasi login menggunakan cookie
-3. Jika login berhasil, admin diarahkan ke dashboard
-4. Admin dapat menambah, mengubah, dan menghapus data resep
-5. Data resep disimpan ke dalam database MySQL
-6. Admin dapat mengekspor laporan resep ke format PDF dan Excel
-7. Pengunjung dapat mengakses halaman frontend untuk melihat resep tanpa login
+### 1️⃣ Guest (Pengunjung)
+- Mengakses landing page
+- Melihat daftar dan detail resep
+- Tidak perlu login
+- Tidak dapat mengelola data
+
+### 2️⃣ User
+- Melakukan register dan login
+- Mengakses halaman user
+- Menyimpan resep ke menu favorit
+- Tidak memiliki akses CRUD data utama
+
+### 3️⃣ Admin
+- Login ke sistem melalui halaman admin
+- Mengakses dashboard
+- Mengelola data resep (CRUD)
+- Mengekspor laporan ke format PDF dan Excel
 
 ---
 
-## Arsitektur Sistem
+## 🔄 Alur Sistem Aplikasi
+1. Pengguna mengakses landing page
+2. Guest dapat melihat resep tanpa login
+3. User melakukan register dan login
+4. Admin login melalui halaman admin
+5. Sistem melakukan validasi session atau cookie
+6. Admin diarahkan ke dashboard
+7. Admin mengelola data resep
+8. Admin mengekspor laporan PDF dan Excel
 
-Frontend (HTML, CSS, Bootstrap)  
-↓  
-Backend (PHP)  
-↓  
-Database (MySQL)
+---
 
-Frontend berfungsi sebagai antarmuka pengguna, backend menangani logika aplikasi, autentikasi cookie, serta pengolahan data, dan database digunakan sebagai media penyimpanan data.
+## 🏗️ Arsitektur Sistem
+- **Frontend:** HTML, CSS, Bootstrap
+- **Backend:** PHP
+- **Database:** MySQL
+
+Frontend berfungsi sebagai antarmuka pengguna, backend menangani logika aplikasi, autentikasi session/cookie, serta pengolahan data, dan database digunakan sebagai media penyimpanan data.
 
 ---
 
 ## Pemenuhan Ketentuan Proyek UAS
 
-### Backend dan Frontend Terintegrasi
+### a. Backend dan Frontend Terintegrasi
 Aplikasi mengintegrasikan frontend dan backend dalam satu sistem berbasis web menggunakan PHP dan MySQL.
 
-### Dashboard
+### b. Dashboard
 Sistem menyediakan dashboard admin sebagai pusat pengelolaan dan informasi data resep.
 
-### Laporan (PDF dan Excel)
-Aplikasi menyediakan fitur export laporan data resep ke dalam format PDF dan Excel.
+### c. Fitur Register dan Login
+Aplikasi menyediakan fitur login untuk admin dan user serta register hanya untuk user.
 
-### CRUD
-Fungsi Create, Read, Update, dan Delete diterapkan pada data resep.
+### d. Laporan (PDF dan Excel)
+Admin dapat mengekspor laporan data resep ke dalam format PDF dan Excel di dashboard admin.
 
-### Autentikasi Cookie
-Sistem autentikasi menggunakan cookie `login_admin`. Cookie dibuat saat login berhasil dan diverifikasi pada setiap halaman admin.
+Informasi Akses Admin (Khusus Penguji)
+Untuk keperluan pengujian fitur laporan (Export PDF & Excel) pada dashboard admin, berikut disediakan akun admin yang dapat digunakan oleh dosen penguji:
+- Username: admin
+- Password: Sw33t!9xQ#A2v
 
-### Studi Kasus Nyata
+Akun ini digunakan untuk mengakses dashboard admin, termasuk fitur:
+- Pengelolaan data resep (CRUD)
+- Ekspor laporan resep ke format PDF dan Excel
+
+Informasi akun ini disediakan hanya untuk keperluan evaluasi dan penilaian UAS.
+
+### e. CRUD (Create, Read, Update, Delete)
+Sistem menerapkan fungsi CRUD pada data resep yang dikelola oleh admin.
+
+### f. Session / Cookies
+Sistem menerapkan autentikasi menggunakan session dan cookie yang diverifikasi di sisi frontend dan backend.
+
+### g. Studi Kasus Nyata
 Proyek dikembangkan berdasarkan kebiasaan nyata dalam menyimpan resep makanan dan minuman dari media sosial.
 
-### Proyek Individual
-Proyek dikerjakan secara mandiri dan bukan kerja kelompok.
+### h. Hosting Online
+Aplikasi telah dihosting dan dapat diakses secara online melalui:
+http://agri.web.id
+
+### i. Footer
+Setiap halaman aplikasi menampilkan footer dengan format:
+@Copyright by 23552011314_Fahmi Fauziah Nur Fadillah_TIF RP 23 CNS A_UASWEB1
 
 ---
 
-## Tampilan Aplikasi (Screenshot)
-
-### Halaman Login Admin
-Menampilkan halaman login admin sebelum masuk ke sistem.
-
-![Login Admin](screenshots/1_login.png)
-
+## 🔗 DOKUMENTASI
+- **Link Github:** https://github.com/Fahmifzh/WEB1/
+- **Link Drive Dokumentasi:** https://drive.google.com/drive/folders/114kW7Bo3iMNWqoZBOlSRku0bSxvUR7VP?usp=sharing
+- **Link Website:** http://agri.web.id
 ---
 
-### Bukti Cookie Login
-Menampilkan bukti autentikasi menggunakan cookie `login_admin` yang diverifikasi melalui variabel `$_COOKIE` pada halaman dashboard.
-
-![Cookie Login](screenshots/2_cookie.png)
-
----
-
-### Dashboard Admin
-Dashboard admin sebagai pusat pengelolaan data resep.
-
-![Dashboard Admin](screenshots/3_dashboard.png)
-
----
-
-### Kelola Data Resep (CRUD)
-Halaman pengelolaan data resep yang mendukung tambah, edit, dan hapus data.
-
-![Kelola Resep](screenshots/4_crud.png)
-
----
-
-### Tambah Data Resep
-Form untuk menambahkan data resep baru.
-
-![Tambah Resep](screenshots/5_tambah.png)
-
----
-
-### Edit Data Resep
-Form untuk mengubah data resep yang telah tersimpan.
-
-![Edit Resep](screenshots/6_edit.png)
-
----
-
-### Export Laporan
-Fitur export laporan data resep ke format PDF dan Excel.
-
-![Export Laporan](screenshots/7_export_excel.png)
-
-![Export Laporan](screenshots/8_export_pdf.png)
-
----
-
-### Halaman Frontend Pengunjung
-Halaman frontend yang dapat diakses oleh pengunjung untuk melihat daftar dan detail resep.
-
-![Frontend User](screenshots/9_frontend.png)
-
----
-
-## Teknologi yang Digunakan
-
+## 🧪 Teknologi yang Digunakan
 - PHP
 - MySQL
 - HTML5
@@ -158,8 +123,7 @@ Halaman frontend yang dapat diakses oleh pengunjung untuk melihat daftar dan det
 
 ---
 
-## Pengembang
-
-Nama: Fahmi Fauziah  
-Mata Kuliah: Web 1  
-Jenis Proyek: Ujian Akhir Semester (UAS)
+## 👤 Pengembang
+**Nama:** Fahmi Fauziah Nur Fadillah  
+**Mata Kuliah:** PEMROGRAMAN WEBSITE 1  
+**Jenis Proyek:** Ujian Akhir Semester (UAS)
