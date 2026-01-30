@@ -1,67 +1,113 @@
 <?php
-include '../config.php';
+include 'auth_check.php';
 
-if (!isset($_COOKIE['login_admin'])) {
-    header("Location: ../login.php");
-    exit;
+// CSRF TOKEN (UNTUK AKSI)
+if (empty($_SESSION['token'])) {
+  $_SESSION['token'] = bin2hex(random_bytes(32));
 }
 
-$username = $_COOKIE['login_admin'];
+$resep = mysqli_query($conn,"
+  SELECT resep.*, kategori.nama_kategori
+  FROM resep
+  JOIN kategori ON resep.kategori_id = kategori.id
+  ORDER BY resep.id DESC
+");
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Data Resep</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Kelola Resep | SweetSip Studio</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
-<div class="container mt-5">
-    <h3 class="fw-bold">Data Resep 🍹</h3>
 
-    <a href="tambah.php" class="btn btn-success mb-3">+ Tambah Resep</a>
-    <a href="dashboard.php" class="btn btn-secondary mb-3">⬅ Dashboard</a>
-<div class="mb-3">
-        <a href="export_excel.php" class="btn btn-outline-success">
-            Export Excel 📊
-        </a>
-        <a href="export_pdf.php" class="btn btn-outline-danger">
-            Export PDF 📄
-        </a>
+<nav class="navbar navbar-expand-lg bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+      <img src="../assets/img/logo.png" alt="Logo" width="35" height="35"
+           class="d-inline-block align-text-top me-2">
+      Admin SweetSip
+    </a>
+    <div class="ms-auto">
+      <a href="dashboard.php" class="btn btn-sm btn-outline-secondary me-2">
+        Dashboard
+      </a>
+      <a href="../auth/logout.php" class="btn btn-sm btn-outline-danger">
+        Logout
+      </a>
     </div>
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Kategori</th>
-            <th>Gambar</th>
-            <th>Aksi</th>
-        </tr>
+  </div>
+</nav>
 
-        <?php
-        $no = 1;
-        $data = mysqli_query($conn, "SELECT * FROM resep");
-        while ($row = mysqli_fetch_array($data)) {
-        ?>
+<div class="container my-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold">🍹 Kelola Resep</h4>
+    <a href="resep_add.php" class="btn btn-aesthetic">
+      ➕ Tambah Resep
+    </a>
+  </div>
+
+  <div class="card p-3 table-responsive">
+    <table class="table table-bordered align-middle text-center">
+      <thead class="table-light">
         <tr>
-            <td><?php echo $no++; ?></td>
-            <td><?php echo $row['nama_resep']; ?></td>
-            <td><?php echo $row['kategori']; ?></td>
-            <td>
-                <img src="../img/<?php echo $row['gambar']; ?>" width="80">
-            </td>
-            <td>
-                <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="hapus.php?id=<?php echo $row['id']; ?>"
-                   class="btn btn-danger btn-sm"
-                   onclick="return confirm('Yakin hapus resep?')">
-                   Hapus
-                </a>
-            </td>
+          <th>No</th>
+          <th>Gambar</th>
+          <th>Nama Resep</th>
+          <th>Kategori</th>
+          <th>Tanggal</th>
+          <th>Aksi</th>
         </tr>
-        <?php } ?>
+      </thead>
+      <tbody>
+
+      <?php
+      $no=1;
+      while($r=mysqli_fetch_assoc($resep)):
+      ?>
+        <tr>
+          <td><?= $no++; ?></td>
+          <td>
+            <img src="../assets/uploads/<?= htmlspecialchars($r['gambar']); ?>"
+                 width="80" class="rounded">
+          </td>
+          <td><?= htmlspecialchars($r['nama_resep']); ?></td>
+          <td><?= htmlspecialchars($r['nama_kategori']); ?></td>
+          <td><?= date('d-m-Y', strtotime($r['created_at'])); ?></td>
+          <td>
+            <a href="resep_edit.php?id=<?= (int)$r['id']; ?>"
+               class="btn btn-sm btn-outline-primary">
+              Edit
+            </a>
+
+            <!-- HAPUS PAKAI FORM + CSRF -->
+            <form action="resep_delete.php"
+                  method="POST"
+                  class="d-inline"
+                  onsubmit="return confirm('Yakin hapus resep ini?')">
+              <input type="hidden" name="id"
+                     value="<?= (int)$r['id']; ?>">
+              <input type="hidden" name="token"
+                     value="<?= $_SESSION['token']; ?>">
+              <button class="btn btn-sm btn-outline-danger">
+                Hapus
+              </button>
+            </form>
+          </td>
+        </tr>
+      <?php endwhile; ?>
+
+      </tbody>
     </table>
+  </div>
+
 </div>
+
+<?php include '../layout/footer.php'; ?>
 </body>
 </html>

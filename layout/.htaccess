@@ -1,0 +1,14 @@
+# MATIKAN DIRECTORY LISTING
+Options -Indexes
+
+# BLOK FILE SENSITIF
+<FilesMatch "(config.php|database.sql)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# BLOK AKSES FILE SYSTEM
+<Files ~ "\.(ini|log|env|sql)$">
+    Order allow,deny
+    Deny from all
+</Files>
